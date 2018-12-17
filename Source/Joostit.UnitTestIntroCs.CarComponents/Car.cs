@@ -90,8 +90,10 @@ namespace Joostit.UnitTestIntroCs.CarComponents
 
         private string getDistanceFileName()
         {
+            string assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string license = !String.IsNullOrEmpty(LicensePlate) ? LicensePlate : "-";
-            return String.Format(distanceFileNameBase, license);
+            string fileName = String.Format(distanceFileNameBase, license);
+            return Path.Combine(assemblyPath, fileName);
         }
 
         private void InitializeDistanceInfo()
